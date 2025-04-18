@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Хэрэглэгчийн бүртгэл</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #0004ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0400ff;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #0400ff;
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: #ff4444;
+        }
+
+        .delete-btn:hover {
+            background-color: #cc0000;
+        }
+
+        @media (max-width: 768px) {
+            .input-container {
+                flex-direction: column;
+            }
+            
+            input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Хэрэглэгчийн бүртгэл</h1>
+    
+    <div class="input-container">
+        <input type="text" id="ovog" placeholder="Овог...">
+        <input type="text" id="ner" placeholder="Нэр...">
+        <input type="number" id="nas" placeholder="Нас...">
+        <button onclick="addUser()">Бүртгэх</button>
+    </div>
+
+    <table id="userTable">
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>ОВОГ</th>
+                <th>НЭР</th>
+                <th>НАС</th>
+                <th>ҮЙЛДЭЛ</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+        </tbody>
+    </table>
+
+    <script>
+        let userCount = 0;
+
+        function addUser() {
+            const ovog = document.getElementById('ovog').value;
+            const ner = document.getElementById('ner').value;
+            const nas = document.getElementById('nas').value;
+
+            if (!ovog || !ner || !nas) {
+                alert('Бүх талбарыг бөглөнө үү!');
+                return;
+            }
+
+            userCount++;
+            const tableBody = document.getElementById('tableBody');
+            const newRow = document.createElement('tr');
+            
+            newRow.innerHTML = `
+                <td>${userCount}</td>
+                <td>${ovog}</td>
+                <td>${ner}</td>
+                <td>${nas}</td>
+                <td>
+                    <button class="delete-btn" onclick="deleteRow(this)">×</button>
+                </td>
+            `;
+
+            tableBody.appendChild(newRow);
+
+            // Clear input fields
+            document.getElementById('ovog').value = '';
+            document.getElementById('ner').value = '';
+            document.getElementById('nas').value = '';
+        }
+
+        function deleteRow(button) {
+            const row = button.parentNode.parentNode;
+            row.parentNode.removeChild(row);
+            updateRowNumbers();
+        }
+
+        function updateRowNumbers() {
+            const rows = document.getElementById('tableBody').getElementsByTagName('tr');
+            for (let i = 0; i < rows.length; i++) {
+                rows[i].getElementsByTagName('td')[0].textContent = i + 1;
+            }
+            userCount = rows.length;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Profile Layout</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    header, footer {
+      background-color: #5ac9ff;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    header button {
+      padding: 10px;
+      background-color: #ddd;
+      border: none;
+      box-shadow: 2px 2px 5px #aaa;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .profile, .content, footer {
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .profile {
+      background-color: #ddd;
+      text-align: center;
+      border-bottom: 3px solid black;
+    }
+
+    .profile img {
+      background-color: #555;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 10px;
+    }
+
+    .info-line {
+      border-bottom: 1px solid black;
+      width: 60%;
+      margin: 5px auto;
+    }
+
+    .content {
+      background-color: #ccc;
+      text-align: center;
+      border-bottom: 3px solid black;
+    }
+
+    footer {
+      background-color: #ff9999;
+      text-align: center;
+    }
+
+    /* ========== Medium screen (tablet) ========== */
+    @media (min-width: 768px) {
+      .container {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .profile {
+        width: 50%;
+        border-right: 3px solid black;
+        border-bottom: none;
+      }
+
+      .content {
+        width: 50%;
+        border-bottom: none;
+      }
+
+      footer {
+        width: 100%;
+      }
+    }
+
+    /* ========== Large screen (desktop) ========== */
+    @media (min-width: 1024px) {
+      .container {
+        flex-direction: row;
+      }
+
+      .profile {
+        width: 30%;
+      }
+
+      .content {
+        width: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Menu -->
+  <header>
+    <button>Нүүр хуудас</button>
+    <button>Зурагнууд</button>
+    <button>Бичлэгнүүд</button>
+    <button>Газрын зураг</button>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Profile Section -->
+    <div class="profile">
+      <div>
+<        <img src="#" alt="ПРОФАЙЛ ЗУРАГ">
+>        <h3>Хувийн мэдээлэл</h3>
+        <div class="info-line"></div>
+        <div class="info-line"></div>
+        <div class="info-line"></div>
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h2>Агуулга</h2>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    Гэрийн хаяг
+  </footer>
+
+</body>
+</html>

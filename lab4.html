@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("../Downloads/sunset.jpg");
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            width: 300px;
+        }
+        input {
+            width: 95%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ff7b42;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff5900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <label>First Name</label>
+            <input type="text" id="firstName" required>
+
+            <label>Last Name</label>
+            <input type="text" id="lastName" required>
+
+            <label>Username</label>
+            <input type="text" id="username" required>
+
+            <label>Email Address</label>
+            <input type="email" id="email" required>
+
+            <label>Password</label>
+            <input type="password" id="password" required>
+            <button onclick="window.location.href='lab4.1.html';">Sign up</button>
+            <button onclick="window.location.href='lab4.1.html';">Log in</button>
+            
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const userData = {
+                firstName: firstName,
+                lastName: lastName,
+                username: username,
+                email: email,
+                password: password
+            };
+
+            console.log('User Registered:', userData);
+            alert('Registration successful! Check the console for details.');
+
+            // You can send the data t.o a backend here
+        });
+    </script>
+
+</body>
+</html>
